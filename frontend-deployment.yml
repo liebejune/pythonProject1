@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: frontend-deployment
+spec:
+ selector:
+   matchLabels:
+    type: web
+    app: frontend
+ replicas: 2
+ template:
+   metadata:
+     labels:
+       type: web
+       app: frontend
+   spec:
+    containers:
+    - name: frontend
+      image: liebejune/frontend:latest
+      envFrom:
+      ports:
+      - containerPort: 80
+      resources:
+        requests:
+          cpu: 100m
+        limits:
+          cpu: 200m
