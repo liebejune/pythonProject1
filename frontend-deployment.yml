@@ -2,6 +2,9 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
  name: frontend-deployment
+ labels:
+   type: web
+   app: frontend
 spec:
  selector:
    matchLabels:
@@ -13,6 +16,7 @@ spec:
      labels:
        type: web
        app: frontend
+       version: v6
    spec:
     containers:
     - name: frontend
